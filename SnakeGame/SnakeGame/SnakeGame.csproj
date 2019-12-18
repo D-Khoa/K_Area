@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\BasePanelGame.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\BasePanelGame.Designer.cs">
+      <DependentUpon>BasePanelGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainGame.cs">
       <SubType>Form</SubType>
     </Compile>
