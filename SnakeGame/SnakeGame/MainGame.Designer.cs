@@ -31,6 +31,10 @@
             this.bwFPS = new System.ComponentModel.BackgroundWorker();
             this.pnlMain = new SnakeGame.BasePanelGame();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsFPS = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsHighScore = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsScore = new System.Windows.Forms.ToolStripStatusLabel();
@@ -39,17 +43,15 @@
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classicalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.easyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsHighScore = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsFPS = new System.Windows.Forms.ToolStripStatusLabel();
+            this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tstxtLevel = new System.Windows.Forms.ToolStripTextBox();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -90,11 +92,37 @@
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(44, 19);
+            this.toolStripStatusLabel3.Text = "Level :";
+            // 
+            // tsFPS
+            // 
+            this.tsFPS.Name = "tsFPS";
+            this.tsFPS.Size = new System.Drawing.Size(13, 19);
+            this.tsFPS.Text = "0";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(72, 19);
+            this.toolStripStatusLabel2.Text = "HighScore :";
+            // 
+            // tsHighScore
+            // 
+            this.tsHighScore.Name = "tsHighScore";
+            this.tsHighScore.Size = new System.Drawing.Size(13, 19);
+            this.tsHighScore.Text = "0";
+            // 
             // tsStatus
             // 
             this.tsStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.tsStatus.Name = "tsStatus";
-            this.tsStatus.Size = new System.Drawing.Size(416, 19);
+            this.tsStatus.Size = new System.Drawing.Size(408, 19);
             this.tsStatus.Spring = true;
             this.tsStatus.Text = "None";
             // 
@@ -156,46 +184,42 @@
             this.chooseModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.chooseModeToolStripMenuItem.Text = "Choose Mode";
             // 
-            // levelToolStripMenuItem
-            // 
-            this.levelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.easyToolStripMenuItem,
-            this.mediumToolStripMenuItem,
-            this.hardToolStripMenuItem});
-            this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
-            this.levelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.levelToolStripMenuItem.Text = "Level";
-            // 
-            // quitToolStripMenuItem
-            // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
             // classicalToolStripMenuItem
             // 
             this.classicalToolStripMenuItem.Name = "classicalToolStripMenuItem";
-            this.classicalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.classicalToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.classicalToolStripMenuItem.Text = "Classical";
             this.classicalToolStripMenuItem.Click += new System.EventHandler(this.classicalToolStripMenuItem_Click);
             // 
             // modernToolStripMenuItem
             // 
             this.modernToolStripMenuItem.Name = "modernToolStripMenuItem";
-            this.modernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modernToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.modernToolStripMenuItem.Text = "Modern";
             this.modernToolStripMenuItem.Click += new System.EventHandler(this.modernToolStripMenuItem_Click);
             // 
+            // levelToolStripMenuItem
+            // 
+            this.levelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.easyToolStripMenuItem,
+            this.mediumToolStripMenuItem,
+            this.hardToolStripMenuItem,
+            this.customToolStripMenuItem});
+            this.levelToolStripMenuItem.Name = "levelToolStripMenuItem";
+            this.levelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.levelToolStripMenuItem.Text = "Level";
+            // 
             // easyToolStripMenuItem
             // 
+            this.easyToolStripMenuItem.CheckOnClick = true;
             this.easyToolStripMenuItem.Name = "easyToolStripMenuItem";
             this.easyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.easyToolStripMenuItem.Text = "Easy";
-            this.easyToolStripMenuItem.Click += new System.EventHandler(this.easyToolStripMenuItem_Click);
+            this.easyToolStripMenuItem.CheckedChanged += new System.EventHandler(this.easyToolStripMenuItem_CheckedChanged);
             // 
             // mediumToolStripMenuItem
             // 
+            this.mediumToolStripMenuItem.CheckOnClick = true;
             this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
             this.mediumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mediumToolStripMenuItem.Text = "Medium";
@@ -203,36 +227,33 @@
             // 
             // hardToolStripMenuItem
             // 
+            this.hardToolStripMenuItem.CheckOnClick = true;
             this.hardToolStripMenuItem.Name = "hardToolStripMenuItem";
             this.hardToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hardToolStripMenuItem.Text = "Hard";
             this.hardToolStripMenuItem.Click += new System.EventHandler(this.hardToolStripMenuItem_Click);
             // 
-            // tsHighScore
+            // customToolStripMenuItem
             // 
-            this.tsHighScore.Name = "tsHighScore";
-            this.tsHighScore.Size = new System.Drawing.Size(13, 19);
-            this.tsHighScore.Text = "0";
+            this.customToolStripMenuItem.CheckOnClick = true;
+            this.customToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tstxtLevel});
+            this.customToolStripMenuItem.Name = "customToolStripMenuItem";
+            this.customToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customToolStripMenuItem.Text = "Custom";
             // 
-            // toolStripStatusLabel2
+            // tstxtLevel
             // 
-            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(72, 19);
-            this.toolStripStatusLabel2.Text = "HighScore :";
+            this.tstxtLevel.Name = "tstxtLevel";
+            this.tstxtLevel.Size = new System.Drawing.Size(100, 23);
+            this.tstxtLevel.TextChanged += new System.EventHandler(this.tstxtLevel_TextChanged);
             // 
-            // toolStripStatusLabel3
+            // quitToolStripMenuItem
             // 
-            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(36, 19);
-            this.toolStripStatusLabel3.Text = "FPS :";
-            // 
-            // tsFPS
-            // 
-            this.tsFPS.Name = "tsFPS";
-            this.tsFPS.Size = new System.Drawing.Size(13, 19);
-            this.tsFPS.Text = "0";
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // MainGame
             // 
@@ -280,6 +301,8 @@
         private System.Windows.Forms.ToolStripMenuItem mediumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox tstxtLevel;
     }
 }
 

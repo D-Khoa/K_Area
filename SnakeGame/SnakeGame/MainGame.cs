@@ -37,7 +37,7 @@ namespace SnakeGame
             cols = w / UNIT;
             rows = h / UNIT;
             score = 0;
-            fps = 30;
+            fps = 2;
         }
 
         private void MainGame_Load(object sender, EventArgs e)
@@ -104,7 +104,10 @@ namespace SnakeGame
                     return;
                 }
                 bwFPS.ReportProgress(0);
-                Thread.Sleep(fps * 10);
+                if (fps > 0)
+                    Thread.Sleep(1000 / fps);
+                else
+                    Thread.Sleep(1000);
             }
         }
 
@@ -142,10 +145,14 @@ namespace SnakeGame
             }
             else
             {
-                if (s.X == this.Width)
+                if (s.X >= w)
                     s.X = 0;
-                if (s.Y == this.Height)
+                if (s.Y >= h)
                     s.Y = 0;
+                if (s.X <= 0)
+                    s.X = w;
+                if (s.Y <= 0)
+                    s.Y = h;
                 for (int i = 0; i < snake.Count; i++)
                 {
                     s0 = snake[i];
@@ -206,6 +213,16 @@ namespace SnakeGame
 
         }
 
+        private void tstxtLevel_TextChanged(object sender, EventArgs e)
+        {
+            fps = int.Parse(tstxtLevel.Text);
+        }
+
+        private void easyToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if()
+        }
+
         private void modernToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -213,17 +230,17 @@ namespace SnakeGame
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            fps = 2;
         }
 
         private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            fps = 5;
         }
 
         private void hardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            fps = 10;
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
