@@ -46,23 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\BasePanelGame.cs">
+    <Compile Include="BaseControl\BasePanelGame.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model\BasePanelGame.Designer.cs">
+    <Compile Include="BaseControl\BasePanelGame.Designer.cs">
       <DependentUpon>BasePanelGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainGame.cs">
+    <Compile Include="View\MainGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainGame.Designer.cs">
+    <Compile Include="View\MainGame.Designer.cs">
       <DependentUpon>MainGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\BaseCell.cs" />
-    <Compile Include="Model\HeadLocation.cs" />
+    <Compile Include="Model\Snake.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainGame.resx">
+    <EmbeddedResource Include="View\MainGame.resx">
       <DependentUpon>MainGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -87,6 +86,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
