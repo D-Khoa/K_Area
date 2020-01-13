@@ -33,13 +33,13 @@
             this.btnExit = new BaseLibrary.BaseButton();
             this.btnSetting = new BaseLibrary.BaseButton();
             this.btnStart = new BaseLibrary.BaseButton();
-            this.baseMediaPlayer1 = new BaseLibrary.BaseMediaPlayer();
+            this.wmpBackGroundMusic = new BaseLibrary.BaseMediaPlayer();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Audiowide", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -99,23 +99,23 @@
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // baseMediaPlayer1
+            // wmpBackGroundMusic
             // 
-            this.baseMediaPlayer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.baseMediaPlayer1.Isplaying = true;
-            this.baseMediaPlayer1.Location = new System.Drawing.Point(0, 207);
-            this.baseMediaPlayer1.Name = "baseMediaPlayer1";
-            this.baseMediaPlayer1.Size = new System.Drawing.Size(400, 88);
-            this.baseMediaPlayer1.SrcImage = global::GameCollections.Properties.Resources.MediaPlayerButton;
-            this.baseMediaPlayer1.SrcMusicURL = "..\\..\\Resources\\Music";
-            this.baseMediaPlayer1.TabIndex = 6;
+            this.wmpBackGroundMusic.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.wmpBackGroundMusic.Isplaying = true;
+            this.wmpBackGroundMusic.Location = new System.Drawing.Point(0, 207);
+            this.wmpBackGroundMusic.Name = "wmpBackGroundMusic";
+            this.wmpBackGroundMusic.Size = new System.Drawing.Size(400, 88);
+            this.wmpBackGroundMusic.SrcImage = global::GameCollections.Properties.Resources.MediaPlayerButton;
+            this.wmpBackGroundMusic.SrcMusicURL = "..\\..\\Resources\\Music";
+            this.wmpBackGroundMusic.TabIndex = 6;
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 295);
-            this.Controls.Add(this.baseMediaPlayer1);
+            this.Controls.Add(this.wmpBackGroundMusic);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSetting);
@@ -135,7 +135,7 @@
         private BaseLibrary.BaseButton btnSetting;
         private BaseLibrary.BaseButton btnExit;
         private System.Windows.Forms.Label label1;
-        private BaseLibrary.BaseMediaPlayer baseMediaPlayer1;
+        private BaseLibrary.BaseMediaPlayer wmpBackGroundMusic;
     }
 }
 

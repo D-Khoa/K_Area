@@ -118,5 +118,11 @@ namespace BaseLibrary
                 BackgroundImage = currImage;
             }
         }
+
+        public override void Refresh()
+        {
+            base.Refresh();
+            ChangeFrame(rectNormal);
+        }
     }
 }

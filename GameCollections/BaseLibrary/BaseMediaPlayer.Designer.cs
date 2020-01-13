@@ -32,13 +32,13 @@
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.numVolume = new System.Windows.Forms.NumericUpDown();
             this.trbVolume = new System.Windows.Forms.TrackBar();
+            this.lbMediaName = new System.Windows.Forms.Label();
+            this.lbTime = new System.Windows.Forms.Label();
+            this.timerPlaying = new System.Windows.Forms.Timer(this.components);
             this.btnNext = new BaseLibrary.BaseButton();
             this.btnSound = new BaseLibrary.BaseButton();
             this.btnPlay = new BaseLibrary.BaseButton();
             this.btnStop = new BaseLibrary.BaseButton();
-            this.lbMediaName = new System.Windows.Forms.Label();
-            this.lbTime = new System.Windows.Forms.Label();
-            this.timerPlaying = new System.Windows.Forms.Timer(this.components);
             this.pnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbVolume)).BeginInit();
@@ -82,47 +82,6 @@
             this.trbVolume.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trbVolume.Scroll += new System.EventHandler(this.trbVolume_Scroll);
             // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(35, 10);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(20, 20);
-            this.btnNext.SrcImage = null;
-            this.btnNext.TabIndex = 1;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnSound
-            // 
-            this.btnSound.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnSound.Location = new System.Drawing.Point(85, 10);
-            this.btnSound.Name = "btnSound";
-            this.btnSound.Size = new System.Drawing.Size(20, 20);
-            this.btnSound.SrcImage = null;
-            this.btnSound.TabIndex = 3;
-            this.btnSound.UseVisualStyleBackColor = true;
-            this.btnSound.Click += new System.EventHandler(this.btnSound_Click);
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.Location = new System.Drawing.Point(10, 10);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(20, 20);
-            this.btnPlay.SrcImage = null;
-            this.btnPlay.TabIndex = 0;
-            this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(60, 10);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(20, 20);
-            this.btnStop.SrcImage = null;
-            this.btnStop.TabIndex = 2;
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
             // lbMediaName
             // 
             this.lbMediaName.Dock = System.Windows.Forms.DockStyle.Left;
@@ -147,6 +106,48 @@
             // 
             this.timerPlaying.Interval = 1000;
             this.timerPlaying.Tick += new System.EventHandler(this.timerPlaying_Tick);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(35, 10);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(20, 20);
+            this.btnNext.SrcImage = null;
+            this.btnNext.TabIndex = 1;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnSound
+            // 
+            this.btnSound.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSound.Location = new System.Drawing.Point(85, 10);
+            this.btnSound.Name = "btnSound";
+            this.btnSound.Size = new System.Drawing.Size(20, 20);
+            this.btnSound.SrcImage = null;
+            this.btnSound.TabIndex = 3;
+            this.btnSound.UseVisualStyleBackColor = true;
+            this.btnSound.Click += new System.EventHandler(this.btnSound_Click);
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.BackColor = System.Drawing.Color.Transparent;
+            this.btnPlay.Location = new System.Drawing.Point(10, 10);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(20, 20);
+            this.btnPlay.SrcImage = null;
+            this.btnPlay.TabIndex = 0;
+            this.btnPlay.UseVisualStyleBackColor = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Location = new System.Drawing.Point(60, 10);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(20, 20);
+            this.btnStop.SrcImage = null;
+            this.btnStop.TabIndex = 2;
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // BaseMediaPlayer
             // 

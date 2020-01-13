@@ -64,7 +64,6 @@ namespace BaseLibrary
         Rectangle rectSound;
         Rectangle rectNoSound;
         DirectoryInfo SrcMusic;
-        bool isplaying = false;
         WindowsMediaPlayer mediaplayer;
         #endregion
 
@@ -139,7 +138,6 @@ namespace BaseLibrary
                     IWMPMedia mediaitem = mediaplayer.newMedia(musicfile);
                     playlist.appendItem(mediaitem);
                 }
-                isplaying = true;
                 timerPlaying.Enabled = true;
                 mediaplayer.currentPlaylist = playlist;
                 btnPlay.SrcImage = CutFrame(w, h, rectPause);
@@ -151,61 +149,53 @@ namespace BaseLibrary
             if (!Isplaying)
                 mediaplayer.controls.pause();
             if (trbVolume.Value == 0)
-                btnSound.SrcImage = CutFrame(w, h, rectNoSound);
+                mediaplayer.settings.mute = true;
             else
-                btnSound.SrcImage = CutFrame(w, h, rectSound);
+                mediaplayer.settings.mute = false;
             Refresh();
         }
         #region MEADIA BUTTON ABILITY
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if (!isplaying)
+            if (!timerPlaying.Enabled)
             {
-                isplaying = true;
                 mediaplayer.controls.play();
-                btnPlay.SrcImage = CutFrame(w, h, rectPause);
+                timerPlaying.Enabled = true;
             }
             else
             {
-                isplaying = false;
                 mediaplayer.controls.pause();
                 timerPlaying.Enabled = false;
-                btnPlay.SrcImage = CutFrame(w, h, rectPlay);
             }
+            Refresh();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             mediaplayer.controls.next();
+            Refresh();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            isplaying = false;
             mediaplayer.controls.stop();
-            btnPlay.SrcImage = CutFrame(w, h, rectPlay);
             timerPlaying.Enabled = false;
+            Refresh();
         }
 
         private void btnSound_Click(object sender, EventArgs e)
         {
             if (mediaplayer.settings.mute)
-            {
                 mediaplayer.settings.mute = false;
-                btnSound.SrcImage = CutFrame(w, h, rectSound);
-            }
             else
-            {
                 mediaplayer.settings.mute = true;
-                btnSound.SrcImage = CutFrame(w, h, rectNoSound);
-            }
+            Refresh();
         }
 
         private void trbVolume_Scroll(object sender, EventArgs e)
         {
             numVolume.Value = trbVolume.Value;
             mediaplayer.settings.volume = trbVolume.Value;
-
         }
 
         private void numVolume_ValueChanged(object sender, EventArgs e)
@@ -218,11 +208,20 @@ namespace BaseLibrary
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            if (isplaying)
+            if (timerPlaying.Enabled)
             {
                 lbMediaName.Text = mediaplayer.currentMedia.name;
                 lbTime.Text = mediaplayer.controls.currentPositionString + "/" + mediaplayer.currentMedia.durationString;
+                btnPlay.SrcImage = CutFrame(w, h, rectPause);
             }
+            else
+                btnPlay.SrcImage = CutFrame(w, h, rectPlay);
+            if (mediaplayer.settings.mute)
+                btnSound.SrcImage = CutFrame(w, h, rectNoSound);
+            else
+                btnSound.SrcImage = CutFrame(w, h, rectSound);
+            btnPlay.Refresh();
+            btnSound.Refresh();
         }
     }
 }
