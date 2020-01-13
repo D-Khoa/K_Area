@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.label1 = new System.Windows.Forms.Label();
-            this.baseMediaPlayer1 = new BaseLibrary.BaseMediaPlayer();
             this.btnExit = new BaseLibrary.BaseButton();
             this.btnSetting = new BaseLibrary.BaseButton();
             this.btnStart = new BaseLibrary.BaseButton();
+            this.baseMediaPlayer1 = new BaseLibrary.BaseMediaPlayer();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Audiowide", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -47,15 +47,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "GAME COLLECTION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // baseMediaPlayer1
-            // 
-            this.baseMediaPlayer1.Location = new System.Drawing.Point(68, 203);
-            this.baseMediaPlayer1.Name = "baseMediaPlayer1";
-            this.baseMediaPlayer1.Size = new System.Drawing.Size(265, 80);
-            this.baseMediaPlayer1.SrcImage = ((System.Drawing.Image)(resources.GetObject("baseMediaPlayer1.SrcImage")));
-            this.baseMediaPlayer1.SrcMusicURL = "D:\\GitHud\\K_Area\\GameCollections\\GameCollections\\Resources\\Music";
-            this.baseMediaPlayer1.TabIndex = 6;
             // 
             // btnExit
             // 
@@ -107,6 +98,17 @@
             this.btnStart.TabIndex = 2;
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // baseMediaPlayer1
+            // 
+            this.baseMediaPlayer1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.baseMediaPlayer1.Isplaying = true;
+            this.baseMediaPlayer1.Location = new System.Drawing.Point(0, 207);
+            this.baseMediaPlayer1.Name = "baseMediaPlayer1";
+            this.baseMediaPlayer1.Size = new System.Drawing.Size(400, 88);
+            this.baseMediaPlayer1.SrcImage = global::GameCollections.Properties.Resources.MediaPlayerButton;
+            this.baseMediaPlayer1.SrcMusicURL = "..\\..\\Resources\\Music";
+            this.baseMediaPlayer1.TabIndex = 6;
             // 
             // MainMenu
             // 

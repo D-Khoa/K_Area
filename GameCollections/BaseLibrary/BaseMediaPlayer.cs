@@ -38,6 +38,21 @@ namespace BaseLibrary
                 Invalidate();
             }
         }
+
+        private bool _isplaying;
+        public bool Isplaying
+        {
+            get
+            {
+                return _isplaying;
+            }
+
+            set
+            {
+                _isplaying = value;
+                Invalidate();
+            }
+        }
         #endregion
 
         #region VARIABLE
@@ -133,6 +148,8 @@ namespace BaseLibrary
 
         private void timerPlaying_Tick(object sender, EventArgs e)
         {
+            if (!Isplaying)
+                mediaplayer.controls.pause();
             if (trbVolume.Value == 0)
                 btnSound.SrcImage = CutFrame(w, h, rectNoSound);
             else
@@ -152,6 +169,7 @@ namespace BaseLibrary
             {
                 isplaying = false;
                 mediaplayer.controls.pause();
+                timerPlaying.Enabled = false;
                 btnPlay.SrcImage = CutFrame(w, h, rectPlay);
             }
         }
@@ -163,7 +181,9 @@ namespace BaseLibrary
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            isplaying = false;
             mediaplayer.controls.stop();
+            btnPlay.SrcImage = CutFrame(w, h, rectPlay);
             timerPlaying.Enabled = false;
         }
 
