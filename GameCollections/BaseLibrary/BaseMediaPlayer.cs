@@ -10,6 +10,9 @@ namespace BaseLibrary
     {
         #region GET SOURCE IMAGE & PLAY LIST FOLDER
         private Image _srcImage;
+        /// <summary>
+        /// Theme of media player
+        /// </summary>
         public Image SrcImage
         {
             get
@@ -25,6 +28,9 @@ namespace BaseLibrary
         }
 
         private string _srcMusicURL;
+        /// <summary>
+        /// Link music folder
+        /// </summary>
         public string SrcMusicURL
         {
             get
@@ -40,6 +46,9 @@ namespace BaseLibrary
         }
 
         private bool _isplaying;
+        /// <summary>
+        /// Set player state
+        /// </summary>
         public bool Isplaying
         {
             get
@@ -51,6 +60,40 @@ namespace BaseLibrary
             {
                 _isplaying = value;
                 Invalidate();
+            }
+        }
+
+        private bool _loadPlaylist;
+        /// <summary>
+        /// Load playlist
+        /// </summary>
+        public bool LoadPlaylist
+        {
+            get
+            {
+                return _loadPlaylist;
+            }
+
+            set
+            {
+                _loadPlaylist = value;
+            }
+        }
+
+        private int _volume;
+        /// <summary>
+        /// Set volume
+        /// </summary>
+        public int Volume
+        {
+            get
+            {
+                return _volume;
+            }
+
+            set
+            {
+                _volume = value;
             }
         }
         #endregion
@@ -72,8 +115,6 @@ namespace BaseLibrary
             InitializeComponent();
             timerPlaying.Enabled = false;
             mediaplayer = new WindowsMediaPlayer();
-            trbVolume.Value = (int)numVolume.Value;
-            mediaplayer.settings.volume = trbVolume.Value;
         }
 
         private void BaseMediaPlayer_Load(object sender, EventArgs e)
@@ -96,14 +137,6 @@ namespace BaseLibrary
                     btnSound.SrcImage = CutFrame(w, h, rectNoSound);
                 else
                     btnSound.SrcImage = CutFrame(w, h, rectSound);
-            }
-            #endregion
-
-            #region GET MEDIA PLAY LIST
-            if (!string.IsNullOrEmpty(SrcMusicURL))
-            {
-                SrcMusic = new DirectoryInfo(SrcMusicURL);
-                CreatePlaylist();
             }
             #endregion
         }
@@ -146,7 +179,7 @@ namespace BaseLibrary
 
         private void timerPlaying_Tick(object sender, EventArgs e)
         {
-            if (!Isplaying)
+            if (!_isplaying)
                 mediaplayer.controls.pause();
             if (trbVolume.Value == 0)
                 mediaplayer.settings.mute = true;
@@ -154,16 +187,19 @@ namespace BaseLibrary
                 mediaplayer.settings.mute = false;
             Refresh();
         }
+
         #region MEADIA BUTTON ABILITY
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (!timerPlaying.Enabled)
             {
+                _isplaying = true;
                 mediaplayer.controls.play();
                 timerPlaying.Enabled = true;
             }
             else
             {
+                _isplaying = false;
                 mediaplayer.controls.pause();
                 timerPlaying.Enabled = false;
             }
@@ -196,18 +232,34 @@ namespace BaseLibrary
         {
             numVolume.Value = trbVolume.Value;
             mediaplayer.settings.volume = trbVolume.Value;
+            Volume = trbVolume.Value;
         }
 
         private void numVolume_ValueChanged(object sender, EventArgs e)
         {
             trbVolume.Value = (int)numVolume.Value;
             mediaplayer.settings.volume = trbVolume.Value;
+            Volume = (int)numVolume.Value;
         }
         #endregion
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+            if (_loadPlaylist)
+            {
+                #region GET MEDIA PLAY LIST
+                if (!string.IsNullOrEmpty(_srcMusicURL))
+                {
+                    SrcMusic = new DirectoryInfo(_srcMusicURL);
+                    CreatePlaylist();
+                }
+                #endregion
+                _loadPlaylist = false;
+            }
+            numVolume.Value = (decimal)_volume;
+            trbVolume.Value = _volume;
+            mediaplayer.settings.volume = _volume;
             if (timerPlaying.Enabled)
             {
                 lbMediaName.Text = mediaplayer.currentMedia.name;

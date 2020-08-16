@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BaseLibrary">
-      <HintPath>..\DLL\BaseLibrary.dll</HintPath>
+    <Reference Include="BaseLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\BaseLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SettingFlag\SettingFlag.cs" />
     <Compile Include="View\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,12 +59,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\SettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\SettingForm.Designer.cs">
-      <DependentUpon>SettingForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="View\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -70,9 +66,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\SettingForm.resx">
-      <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -95,31 +88,22 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="Model\" />
-    <Folder Include="MyControls\" />
     <Folder Include="Resources\Music\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MediaPlayerButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuApply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuExit.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MenuSetting.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MenuStart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MenuExit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="WMPLib">
-      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MediaPlayerButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

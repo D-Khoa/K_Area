@@ -24,6 +24,23 @@ namespace BaseLibrary
                 Invalidate();
             }
         }
+
+        private bool _isCenter;
+        /// <summary>
+        /// Preset button width center
+        /// </summary>
+        public bool IsCenter
+        {
+            get
+            {
+                return _isCenter;
+            }
+
+            set
+            {
+                _isCenter = value;
+            }
+        }
         #endregion
 
         #region VARIABLE
@@ -53,6 +70,10 @@ namespace BaseLibrary
             rectHover = new Rectangle(0, h, w, h);
             rectDown = new Rectangle(0, h * 2, w, h);
             ChangeFrame(rectNormal);
+            this.FlatStyle = FlatStyle.Flat;
+            this.FlatAppearance.BorderSize = 0;
+            this.BackColor = Color.Transparent;
+            this.ForeColor = Color.Transparent;
             firstPaint = false;
         }
 
@@ -117,6 +138,8 @@ namespace BaseLibrary
                 //Then set background with a state frame
                 BackgroundImage = currImage;
             }
+            if (_isCenter)
+                this.Location = new Point(this.Parent.Width / 2 - this.Width / 2, this.Location.Y);
         }
 
         public override void Refresh()

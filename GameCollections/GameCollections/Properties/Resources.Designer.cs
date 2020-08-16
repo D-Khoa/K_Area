@@ -73,6 +73,16 @@ namespace GameCollections.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MenuApply {
+            get {
+                object obj = ResourceManager.GetObject("MenuApply", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MenuExit {
             get {
                 object obj = ResourceManager.GetObject("MenuExit", resourceCulture);
