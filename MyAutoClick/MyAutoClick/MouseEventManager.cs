@@ -28,6 +28,7 @@ namespace MyAutoClick
                 for (int i = 0; i < freq; i++)
                 {
                     mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, clientPoint.X, clientPoint.Y, 0, 0);
+                    Thread.Sleep(50);
                 }
             }
         }

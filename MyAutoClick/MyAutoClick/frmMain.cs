@@ -37,7 +37,7 @@ namespace MyAutoClick
                 MouseEventManager.GetCursorPos(out currentMousePos);
                 var currentProcess = Process.GetCurrentProcess();
                 IntPtr hWnd = currentProcess.MainWindowHandle;
-                WindowDisplayManager.ShowWindowAsync(hWnd, WindowDisplayManager.SW_RESTORE);
+                WindowDisplayManager.ShowWindowAsync(hWnd, WindowStyles.SW_RESTORE);
                 WindowDisplayManager.SetForegroundWindow(hWnd);
             }
             if (e.Key == Keys.F3 && e.Modifiers == KeyModifiers.Alt)
@@ -71,9 +71,9 @@ namespace MyAutoClick
                             foreach (var process in AllProcess)
                             {
                                 IntPtr hWnd = process.MainWindowHandle;
+                                System.Threading.Thread.Sleep(50);
                                 MouseEventManager.ClickOnPoint(hWnd, new Point(X, Y), freq);
                             }
-                            System.Threading.Thread.Sleep(50);
                         }
                     }
                 }
@@ -119,7 +119,7 @@ namespace MyAutoClick
                 foreach (var process in AllProcess)
                 {
                     IntPtr hWnd = process.MainWindowHandle;
-                    WindowDisplayManager.ShowWindowAsync(hWnd, WindowDisplayManager.SW_SHOWMAXIMIZED);
+                    WindowDisplayManager.ShowWindowAsync(hWnd, WindowStyles.SW_SHOWMAXIMIZED);
                     WindowDisplayManager.SetForegroundWindow(hWnd);
                 }
             }
@@ -177,7 +177,7 @@ namespace MyAutoClick
                 foreach (var process in AllProcess)
                 {
                     IntPtr hWnd = process.MainWindowHandle;
-                    WindowDisplayManager.ShowWindowAsync(hWnd, WindowDisplayManager.SW_SHOWMAXIMIZED);
+                    WindowDisplayManager.ShowWindowAsync(hWnd, WindowStyles.SW_SHOWMAXIMIZED);
                     WindowDisplayManager.SetForegroundWindow(hWnd);
                 }
             }

@@ -15,12 +15,11 @@ namespace MyAutoClick
         public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         [DllImport("user32.dll")]
         public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-        public const int SW_HIDE = 0;
-        public const int SW_SHOWNORMAL = 1;
-        public const int SW_SHOWMINIMIZED = 2;
-        public const int SW_SHOWMAXIMIZED = 3;
-        public const int SW_SHOWNOACTIVATE = 4;
-        public const int SW_RESTORE = 9;
-        public const int SW_SHOWDEFAULT = 10;
+        [DllImport("user32.dll")]
+        public static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
+        [DllImport("user32.dll")]
+        public static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+        [DllImport("user32.dll")]
+        public static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
     }
 }

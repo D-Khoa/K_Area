@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoclickTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoclickTool.Designer.cs">
+      <DependentUpon>AutoclickTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowDisplayManager.cs" />
+    <Compile Include="WindowStyles.cs" />
+    <EmbeddedResource Include="AutoclickTool.resx">
+      <DependentUpon>AutoclickTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
