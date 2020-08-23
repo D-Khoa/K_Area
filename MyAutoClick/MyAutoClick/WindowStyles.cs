@@ -2,27 +2,26 @@
 {
     public abstract class WindowStyles
     {
-        public const int GWL_ID = -12;
-        public const int GWL_STYLE = -16;
-        public const int DWLP_USER = 0x8;
-        public const int LWA_ALPHA = 0x2;
-        public const int GWL_WNDPROC = -4;
-        public const int GWL_EXSTYLE = -20;
-        public const int GWL_USERDATA = -21;
-        public const int DWLP_DLGPROC = 0x4;
-        public const int LWA_COLORKEY = 0x1;
-        public const int GWLP_HINSTANCE = -6;
-        public const int GWLP_HWNDPARENT = -8;
         public const int DWLP_MSGRESULT = 0x0;
+        public const int DWLP_DLGPROC = 0x4;
+        public const int DWLP_USER = 0x8;
+        public const int GWL_USERDATA = -21;
+        public const int GWL_EXSTYLE = -20;
+        public const int GWL_STYLE = -16;
+        public const int GWL_ID = -12;
+        public const int GWLP_HWNDPARENT = -8;
+        public const int GWLP_HINSTANCE = -6;
+        public const int GWL_WNDPROC = -4;
+        public const int LWA_ALPHA = 0x2;
+        public const int LWA_COLORKEY = 0x1;
         public const int SW_HIDE = 0;
+        public const int SW_RESTORE = 9;
         public const int SW_SHOWNORMAL = 1;
         public const int SW_SHOWMINIMIZED = 2;
         public const int SW_SHOWMAXIMIZED = 3;
         public const int SW_SHOWNOACTIVATE = 4;
-        public const int SW_RESTORE = 9;
         public const int SW_SHOWDEFAULT = 10;
 
-        public const uint WS_OVERLAPPED = 0x00000000;
         public const uint WS_POPUP = 0x80000000;
         public const uint WS_CHILD = 0x40000000;
         public const uint WS_MINIMIZE = 0x20000000;
@@ -40,6 +39,7 @@
         public const uint WS_THICKFRAME = 0x00040000;
         public const uint WS_GROUP = 0x00020000;
         public const uint WS_TABSTOP = 0x00010000;
+        public const uint WS_OVERLAPPED = 0x00000000;
 
         public const uint WS_MINIMIZEBOX = 0x00020000;
         public const uint WS_MAXIMIZEBOX = 0x00010000;
