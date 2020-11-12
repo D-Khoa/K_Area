@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BaseLibrary.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="E0001" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Writing file error.</Value>
+    </Setting>
+    <Setting Name="E0002" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Reading file error.</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

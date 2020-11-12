@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{03726242-30BC-4AD5-BCF9-96A292EB289C}</ProjectGuid>
+    <ProjectGuid>{2B513B5F-1623-4B9A-BF87-6E48D825701E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameCollections</RootNamespace>
-    <AssemblyName>GameCollections</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>DrMarioProject</RootNamespace>
+    <AssemblyName>DrMarioProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,32 +45,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SettingFlag\SettingFlag.cs" />
-    <Compile Include="View\MainMenu.cs">
+    <Compile Include="Assets\Board20x20.cs" />
+    <Compile Include="Assets\LowCell.cs" />
+    <Compile Include="Assets\MidCell.cs" />
+    <Compile Include="FormMainGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="FormMainGame.Designer.cs">
+      <DependentUpon>FormMainGame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\BaseElement.cs" />
+    <Compile Include="Modules\BaseField.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="Sprites\BackGroundBoard.cs" />
+    <Compile Include="Sprites\BackGroundElement.cs" />
+    <Compile Include="Sprites\BlueAllyElement.cs" />
+    <Compile Include="Sprites\RedEnemyElement.cs" />
+    <Compile Include="Sprites\UCBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Sprites\UCBoard.Designer.cs">
+      <DependentUpon>UCBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCBoardGame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UCBoardGame.Designer.cs">
+      <DependentUpon>UCBoardGame.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormMainGame.resx">
+      <DependentUpon>FormMainGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Sprites\UCBoard.resx">
+      <DependentUpon>UCBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UCBoardGame.resx">
+      <DependentUpon>UCBoardGame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -82,37 +106,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
-    <Folder Include="Resources\Music\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MediaPlayerButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MenuApply.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MenuExit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MenuSetting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MenuStart.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BaseLibrary\BaseLibrary.csproj">
-      <Project>{25c7ce07-9e6f-4cb9-a238-6fa6c7432f9e}</Project>
+      <Project>{25C7CE07-9E6F-4CB9-A238-6FA6C7432F9E}</Project>
       <Name>BaseLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
