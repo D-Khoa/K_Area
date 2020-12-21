@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace BaseLibrary.Elements
 {
@@ -7,63 +9,63 @@ namespace BaseLibrary.Elements
         #region ||PROPERTIES||
         public int Width { get; private set; }
         public int Height { get; private set; }
+        public int BorderSize { get; private set; }
         public int Rows { get; private set; }
         public int Columns { get; private set; }
-        public int BorderSize { get; private set; }
         public int CellWidth { get; private set; }
         public int CellHeight { get; private set; }
-        public Dictionary<int, BaseElement[]> LowCells { get; private set; }
-        public Dictionary<int, BaseElement[]> MidCells { get; private set; }
-        public Dictionary<int, BaseElement[]> HighCells { get; private set; }
-
+        public Rectangle Rect { get; private set; }
+        public Rectangle Border { get; private set; }
+        public Dictionary<int, BaseElement[]> Cells { get; private set; }
         #endregion
 
         public BaseBackground(int width, int height, int rows, int columns)
         {
             Rows = rows;
             Width = width;
+            BorderSize = 0;
             Height = height;
             Columns = columns;
-            CellHeight = height / rows;
-            CellWidth = width / columns;
-            LowCells = new Dictionary<int, BaseElement[]>();
-            MidCells = new Dictionary<int, BaseElement[]>();
-            HighCells = new Dictionary<int, BaseElement[]>();
+            Cells = new Dictionary<int, BaseElement[]>();
+            Update();
         }
 
-        public void SetLowCells(BaseElement cell)
+        public BaseBackground(int width, int height, int rows, int columns, int borderSize)
         {
-            if (!LowCells.ContainsKey(cell.Y))
-            {
-                LowCells.Add(cell.Y, new BaseElement[Columns]);
-            }
-            LowCells[cell.Y][cell.X] = cell;
+            Rows = rows;
+            Width = width;
+            Height = height;
+            Columns = columns;
+            BorderSize = borderSize;
+            Cells = new Dictionary<int, BaseElement[]>();
+            Update();
         }
 
-        public void SetMidCells(BaseElement cell)
+        public void SetCells(BaseElement cell)
         {
-            if (!MidCells.ContainsKey(cell.Y))
+            if (!Cells.ContainsKey(cell.Y))
             {
-                MidCells.Add(cell.Y, new BaseElement[Columns]);
+                Cells.Add(cell.Y, new BaseElement[Columns]);
             }
-            MidCells[cell.Y][cell.X] = cell;
-        }
-
-        public void SetHighCells(BaseElement cell)
-        {
-            if (!HighCells.ContainsKey(cell.Y))
-            {
-                HighCells.Add(cell.Y, new BaseElement[Columns]);
-            }
-            HighCells[cell.Y][cell.X] = cell;
+            Cells[cell.Y][cell.X] = cell;
+            Update();
         }
 
         public void SetSize(int width, int height)
         {
             Width = width;
             Height = height;
-            CellHeight = height / Rows;
-            CellWidth = width / Columns;
+            Update();
+        }
+
+        public void Update()
+        {
+            CellHeight = Math.Min((Height / Rows), (Width / Columns));
+            CellWidth = CellHeight;
+            Height = CellHeight * Rows;
+            Width = CellWidth * Columns;
+            Border = new Rectangle(0, 0, Width, Height);
+            Rect = new Rectangle(BorderSize, BorderSize, Width - 2 * BorderSize, Height - 2 * BorderSize);
         }
     }
 }

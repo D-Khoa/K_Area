@@ -1,5 +1,4 @@
-﻿using BaseLibrary.Global;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace BaseLibrary.Elements
 {
@@ -9,18 +8,18 @@ namespace BaseLibrary.Elements
         public int X { get; private set; }
         public int Y { get; private set; }
         public int Z { get; private set; }
-        public int NewX { get; private set; }
-        public int NewY { get; private set; }
+        public int NewX { get; set; }
+        public int NewY { get; set; }
         public int NewZ { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
         public bool IsBlock { get; private set; }
         public int BorderSize { get; private set; }
         public Rectangle Rect { get; private set; }
+        public Rectangle Border { get; private set; }
         public Bitmap Sprites { get; private set; }
         public Color BackColor { get; private set; }
         public Brush ColorBrush { get; private set; }
-        public ElementDirection Direction { get; private set; }
         #endregion
 
         public BaseElement(int x, int y, int witdh, int height)
@@ -29,7 +28,8 @@ namespace BaseLibrary.Elements
             Y = y;
             Width = witdh;
             Height = height;
-            Rect = new Rectangle(X * Width, Y * Height, Width, Height);
+            BorderSize = 0;
+            Update();
         }
 
         public BaseElement(Color color, int x, int y, int z, int witdh, int height, int borderSize)
@@ -42,7 +42,7 @@ namespace BaseLibrary.Elements
             BackColor = color;
             BorderSize = borderSize;
             ColorBrush = new SolidBrush(color);
-            Rect = new Rectangle(X * Width, Y * Height, Width - 2 * borderSize, Height - 2 * borderSize);
+            Update();
         }
 
         #region ||MOVEMENT||
@@ -66,14 +66,33 @@ namespace BaseLibrary.Elements
             NewY = Y;
             NewX = X + 1;
         }
+        public void MoveCommand(string direction)
+        {
+            switch (direction)
+            {
+                case "UP":
+                    MoveUp();
+                    break;
+                case "DOWN":
+                    MoveDown();
+                    break;
+                case "LEFT":
+                    MoveLeft();
+                    break;
+                case "RIGHT":
+                    MoveRight();
+                    break;
+                default:
+                    break;
+            }
+        }
         public void MoveConfirm()
         {
             if (!IsBlock)
             {
                 X = NewX;
                 Y = NewY;
-                Rect = new Rectangle(X * Width, Y * Height,
-                    Width - 2 * BorderSize, Height - 2 * BorderSize);
+                Update();
             }
         }
         public void MoveLock(bool isBlock)
@@ -86,15 +105,20 @@ namespace BaseLibrary.Elements
         {
             Width = width;
             Height = height;
-            Rect = new Rectangle(X * Width, Y * Height,
-                Width - 2 * BorderSize, Height - 2 * BorderSize);
+            Update();
         }
 
         public void ChangeLocation(int x, int y)
         {
             X = x;
             Y = y;
-            Rect = new Rectangle(X * Width, Y * Height,
+            Update();
+        }
+
+        public void Update()
+        {
+            Border = new Rectangle(X * Width, Y * Height, Width, Height);
+            Rect = new Rectangle(X * Width + BorderSize, Y * Height + BorderSize,
                 Width - 2 * BorderSize, Height - 2 * BorderSize);
         }
     }

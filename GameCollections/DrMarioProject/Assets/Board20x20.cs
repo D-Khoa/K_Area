@@ -5,32 +5,40 @@ namespace DrMarioProject.Assets
 {
     public class Board20x20 : BaseBackground
     {
-        public Board20x20(int width, int height) : base(width, height, 20, 10)
+        public Board20x20(int width, int height) : base(width, height, 20, 10, 1)
         {
 
         }
 
-        public void CheckRow(int rowIndex)
+        public void CheckRow()
         {
-            if (MidCells.ContainsKey(rowIndex)
-                && MidCells[rowIndex].Where(x => x != null).Count() == Columns)
+            for (int i = 0; i < Cells.Count; i++)
             {
-                MidCells.Remove(rowIndex);
-                for (int i = rowIndex; i >= 0; i--)
+                if (Cells.ElementAt(i).Value.All(x => x != null))
                 {
-                    if (MidCells.ContainsKey(i))
+                    Cells.Remove(Cells.ElementAt(i).Key);
+                }
+            }
+            var r = Rows - 1;
+            while (r > 0)
+            {
+                if (!Cells.ContainsKey(r))
+                {
+                    if (Cells.ContainsKey(r - 1))
                     {
-                        for (int j = 0; j < MidCells[i].Length; j++)
+                        for (int c = 0; c < Cells[r - 1].Length; c++)
                         {
-                            if (MidCells[i][j] != null)
+                            if (Cells[r - 1][c] != null)
                             {
-                                MidCells[i][j].ChangeLocation(j, i + 1);
+                                Cells[r - 1][c].ChangeLocation(c, r);
                             }
                         }
-                        MidCells.Add(i + 1, MidCells[i]);
-                        MidCells.Remove(i);
+                        Cells.Add(r, Cells[r - 1]);
+                        Cells.Remove(r - 1);
+                        r = Rows;
                     }
                 }
+                r--;
             }
         }
     }
